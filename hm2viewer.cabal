@@ -13,6 +13,4 @@ Build-Type:          Simple
 
 Executable hm2viewer
   main-is:             main.hs
-  build-depends:       base, array, containers, bytestring, mtl, transformers, filepath, binary, data-binary-ieee754, fclabels, vector-space, pcre-light, OpenGL, OpenGLRaw, GLUT, GLURaw, template-haskell, stb-image == 0.1.3, gtk < 0.13, gtkglext, MaybeT, hmatrix, hdds, hm2, filepath, directory, filemanip
-
-
+  build-depends:       base, array, containers, bytestring, mtl, transformers, filepath, binary, data-binary-ieee754, fclabels, vector-space, pcre-light, OpenGL, OpenGLRaw, GLUT, GLURaw, gtk, gtkglext, template-haskell, hmatrix, hdds, hm2, filepath, directory, filemanip, text

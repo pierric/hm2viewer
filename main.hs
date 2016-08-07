@@ -10,6 +10,7 @@ import Data.IORef
 import qualified Data.Map as M
 import Data.Tree
 import Data.Maybe
+import qualified Data.Text as T
 import Graphics.UI.Gtk
 import Graphics.UI.Gtk.OpenGL
 import qualified Control.Monad.Reader as R
@@ -122,7 +123,7 @@ main = do
   -- 3rd. Renderer
   ani_rend  <- cellRendererTextNew
   cellLayoutPackStart     ani_comb ani_rend True
-  cellLayoutSetAttributes ani_comb ani_rend ani_list (\(idx,ani) -> [ cellText := printf "Anim:%2d" (idx :: Int) ])
+  cellLayoutSetAttributes ani_comb ani_rend ani_list (\(idx,ani) -> [ cellText := T.pack $ printf "Anim:%2d" (idx :: Int) ])
   skin_comb <- comboBoxNewText 
 
   set window [ containerChild := hbox ]
@@ -270,7 +271,7 @@ myChangeModel path worldst (ani_list,ani_comb) skin_comb = do
                          (comboBoxSetActive ani_comb 0)
                     skin_list <- comboBoxGetModelText skin_comb
                     listStoreClear skin_list
-                    mapM_ (listStoreAppend skin_list . takeFileName . head . catMaybes) sl
+                    mapM_ (listStoreAppend skin_list . T.pack . takeFileName . head . catMaybes) sl
                     when (not $ null $ sl)
                          (comboBoxSetActive skin_comb 0)
 
